@@ -1,0 +1,12 @@
+<div *ngIf="note">
+    <h2>Note Details for {{ note.title }} </h2>
+    <p><strong>Title:</strong> {{ note.title }}</p>
+    <p><strong>Name:</strong> {{ note.name }}</p>
+    <p><strong>Label:</strong> {{ note.label }}</p>
+    <p><strong>Email:</strong> {{ note.email }}</p>
+    <p><strong>Content:</strong> {{ note.content }}</p>
+  </div>
+  <div *ngIf="!note">
+    <p>Note not found.</p>
+  </div>
+  

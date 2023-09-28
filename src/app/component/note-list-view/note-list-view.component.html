@@ -1,0 +1,29 @@
+<div class="filter-container">
+    <mat-form-field>
+      <mat-label>Filter by Label</mat-label>
+      <mat-select [(ngModel)]="selectedLabel">
+        <mat-option value="all">All</mat-option>
+        <mat-option value="personal">Personal</mat-option>
+        <mat-option value="work">Work</mat-option>
+        <mat-option value="study">Study</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div class="note-grid">
+    <div class="note-card" *ngFor="let note of filteredNotes" (click)="onNoteClick(note.title)">
+        <!-- <a [routerLink]="['details', note.title]"> -->
+            <div class="note-content">
+                <h3>{{ note.title }}</h3>
+                <p>{{ note.name }}</p>
+                <p> {{ note.email }}</p>
+                <p>{{ note.content }}</p>
+                <p>Label: {{ note.label }}</p>
+                <button mat-icon-button color="warn" (click)="onDelete(note)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        <!-- </a> -->
+    </div>
+  </div>
+  

@@ -1,0 +1,58 @@
+<div class="center-container">
+    <mat-card class="note-card">
+      <mat-card-header>
+        <mat-card-title>Note Form</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput placeholder="Title" formControlName="title">
+            <mat-error *ngIf="noteForm.get('title')?.hasError('required')">
+                Title is Required
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error *ngIf="noteForm.get('name')?.hasError('required')">
+                Name is Required
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Label</mat-label>
+              <mat-select formControlName="label">
+                <mat-option value="personal">Personal</mat-option>
+                <mat-option value="work">Work</mat-option>
+                <mat-option value="study">Study</mat-option>
+              </mat-select>
+              <mat-error *ngIf="noteForm.get('label')?.hasError('required')">
+                Category is required.
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="noteForm.get('email')?.hasError('required')">
+                Email address is Required
+            </mat-error>
+            <mat-error *ngIf="noteForm.get('email')?.hasError('email')">
+                Invalid email address
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Content" formControlName="content"></textarea>
+            <mat-error *ngIf="noteForm.get('content')?.hasError('required')">
+                Please enter the content
+              </mat-error>
+          </mat-form-field>
+          <mat-card-actions>
+            <button mat-raised-button type="submit" [disabled]="disableButton" >Save Note</button>
+          </mat-card-actions>
+        </form>
+      </mat-card-content>
+      <div *ngIf="getShowSucessMessage">
+        <i>form saved sucessfully</i>
+      </div>
+    </mat-card>
+  </div>
+  
+
+  <app-note-list-view *ngIf = 'showListOfNotes' [notes]="notes" (deleteNoteEvent)="deleteFromNote($event)"></app-note-list-view>

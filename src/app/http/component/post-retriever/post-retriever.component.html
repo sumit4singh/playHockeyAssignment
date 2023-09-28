@@ -1,0 +1,13 @@
+<div>
+    <label>Category of Post: </label>
+    <input type="text" [(ngModel)]="contentType">
+    <button (click)="makeGetCall()">Go</button>
+</div>
+<div class="post-list" *ngIf="showListView">
+    <div *ngFor="let post of redditPosts" class="post">
+      <h2 class="post-title">{{ post.title }}</h2>
+      <div class="post-content">{{ post.selftext }}</div>
+      <div class="post-author">Posted by u/{{ post.author }}</div>
+    </div>
+</div>
+  
